@@ -1,0 +1,25 @@
+# Your Solution
+version: '3.8'
+services:
+ 
+  book_catalog:
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    image: sharvani1app123.azurecr.io/book_catalog:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://sit722_part4_blce_user:maXIF1Tv2fyZTC8fWJiIJlMaLovdRZTG@dpg-crn3hme8ii6s73ekavdg-a.oregon-postgres.render.com/sit722_part4_blce
+      
+  inventory_management:
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    image: sharvani1app123.azurecr.io/inventory_management:latest
+    environment:
+      - DATABASE_URL=postgresql://sit722_part4_blce_user:maXIF1Tv2fyZTC8fWJiIJlMaLovdRZTG@dpg-crn3hme8ii6s73ekavdg-a.oregon-postgres.render.com/sit722_part4_blce
+      
+    ports:
+      - "8001:8001"
+    restart: "no"
